@@ -66,9 +66,12 @@ class SecondFragment : Fragment() {
                         loggedInUser = response.body()
                         Log.d("Register Success", "Register success. Boo.")
                         Log.d("Register Success", "Token:" + loggedInUser?.token.toString())
-                        var intent = Intent(Intent.ACTION_VIEW)
-                        intent.type = "text/giftcards_browse"
-                        intent.data = Uri.parse("https://appsec.moyix.net/api/index")
+                        //implicit intent is insecure
+                        //var intent = Intent(Intent.ACTION_VIEW)
+                        //intent.type = "text/giftcards_browse"
+                        //intent.data = Uri.parse("https://appsec.moyix.net/api/index")
+                        //explicit intent keeps the info secure and only directed to the intended target: ProductScrollingActivity::class.java
+                        var intent = Intent(activity, ProductScrollingActivity::class.java)
                         intent.putExtra("User", loggedInUser);
                         startActivity(intent)
                     }
