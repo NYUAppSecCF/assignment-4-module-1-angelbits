@@ -4,6 +4,11 @@ on:
   push:
     branches: [ "main"]
 
+# Gemini: Applies to all "run" commands
+defaults:
+  run:
+    working-directory: ./GiftcardSite
+    
 jobs:
   build:
     runs-on: ubuntu-latest
